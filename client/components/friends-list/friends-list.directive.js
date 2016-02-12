@@ -5,7 +5,7 @@ angular.module('friendinatorApp')
     return {
       templateUrl: 'components/friends-list/friends-list.html',
       restrict: 'E',
-      link: function (scope, element, attrs) {
+      link: function () {
       	
       },
       controller: 'FriendsListCtrl',

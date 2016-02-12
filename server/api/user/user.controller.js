@@ -99,7 +99,7 @@ export function destroy(req, res) {
  */
 export function friends(req, res, next) {
   var userId = req.params.id;
-  var friends = [];
+  var userFriends = [];
   var people = [];
 
   User.findByIdAsync(userId)
@@ -108,9 +108,9 @@ export function friends(req, res, next) {
         return res.status(404).end();
       }
 
-      friends = user.friends;
+      userFriends = user.friends;
 
-      User.find({'_id': { $in: friends}}, '-salt -password -email')
+      User.find({'_id': { $in: userFriends}}, '-salt -password -email')
         .then(people => {
           res.json(people);
         })

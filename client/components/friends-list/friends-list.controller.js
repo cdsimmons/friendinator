@@ -7,11 +7,11 @@ class FriendsListCtrl {
 	constructor($attrs, Auth) {
 		this.Auth = Auth;
 		this.user = Auth.getCurrentUser();
-		this.searchable = ($attrs.searchable === "true");
-		this.showCurrent = ($attrs.showCurrent === "true");
-		this.username;
-		this.people;
-		this.feedback;
+		this.searchable = ($attrs.searchable === 'true');
+		this.showCurrent = ($attrs.showCurrent === 'true');
+		this.username = null;
+		this.people = null;
+		this.feedback = null;
 
 		if(this.showCurrent) {
 			// Populate with current friends...
@@ -30,12 +30,7 @@ class FriendsListCtrl {
 		}
 	}
 
-	addFriend(_id) {
-		console.log(_id);
-		//this.user.friends.push();
-	}
-
-	find(form) {
+	find() {
 		this.feedback = null;
 		this.people = [];
 

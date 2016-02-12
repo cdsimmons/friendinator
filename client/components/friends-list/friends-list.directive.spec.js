@@ -6,7 +6,7 @@ describe('Directive: friendsList', function () {
   beforeEach(module('friendinatorApp'));
   beforeEach(module('components/friends-list/friends-list.html'));
 
-  var element, scope;
+  var scope;
 
   beforeEach(inject(function ($rootScope) {
     scope = $rootScope.$new();

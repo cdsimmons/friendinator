@@ -1,7 +1,7 @@
 'use strict';
 
 class SettingsController {
-  constructor(Auth, User) {
+  constructor(Auth) {
     this.user = Auth.getCurrentUser();
     this.errors = {};
     this.submitted = false;
@@ -17,9 +17,15 @@ class SettingsController {
         .then(() => {
           this.message = 'Details successfully changed.';
         })
-        .catch(() => {
-          form.password.$setValidity('mongoose', false);
-          this.errors[field] = error.message;
+        .catch(err => {
+          err = err.data;
+          this.errors = {};
+
+          // Update validity of form fields that match the mongoose errors
+          angular.forEach(err.errors, (error, field) => {
+            form[field].$setValidity('mongoose', false);
+            this.errors[field] = error.message;
+          });
         });
     } else {
       this.message = 'Error in form.';
