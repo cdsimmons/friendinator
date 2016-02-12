@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Login</h1>
+      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test</code> / <code>test</code></p>
+      <p>Admin account is <code>admin</code> / <code>admin</code></p>
+      <p>Some more accounts to search and use:</p>
+      <ul>
+        <li><code>bla</code> / <code>bla</code></p></li>
+        <li><code>foo</code> / <code>foo</code></p></li>
+        <li><code>bar</code> / <code>bar</code></p></li>
+        <li><code>raa</code> / <code>raa</code></p></li>
+        <li><code>bob</code> / <code>bob</code></p></li>
+        <li><code>bob2</code> / <code>bob2</code></p></li>
+        <li><code>bob3</code> / <code>bob3</code></p></li>
+      </ul>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
+
+        <div class="form-group">
+          <label>Username</label>
+
+          <input type="username" name="username" class="form-control" ng-model="vm.user.username" required>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="vm.user.password" required>
+        </div>
+
+        <div class="form-group has-error">
+          <p class="help-block" ng-show="form.username.$error.required && form.password.$error.required && vm.submitted">
+             Please enter your username and password.
+          </p>
+
+          <p class="help-block">{{ vm.errors.other }}</p>
+        </div>
+
+        <div>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+            Login
+          </button>
+          <a class="btn btn-default btn-lg btn-register" ui-sref="signup">
+            Register
+          </a>
+        </div>
+
+        <hr/>
+        <div class="row">
+          <div class="col-sm-4 col-md-3">
+            <oauth-buttons classes="btn-block"></oauth-buttons>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>

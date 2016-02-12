@@ -1,0 +1,37 @@
+<form class="form container" name="form" ng-submit="vm.find(form)" ng-hide="!vm.searchable" novalidate>
+	<div class="input-group" ng-class="{ 'has-success': form.username.$valid && vm.submitted,
+                                        'has-error': form.username.$invalid && vm.submitted }">
+		<input placeholder="Username..." type="username" name="username" class="form-control col-sm-10" ng-model="vm.username"
+             required
+             mongoose-error/>
+		<span class="input-group-btn">
+			<button class="btn btn-primary" type="submit">Search</button>
+		</span>
+	</div>
+</form>
+
+<div class="container feedback">
+	{{ vm.feedback }}
+</div>
+
+<div class="container friends-list" ng-show="vm.people.length" ng-hide="!vm.people.length">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="person in vm.people">
+				<td>{{person.username}}</td>
+				<td>{{person.name}}</td>
+				<td class="friends-list__controls">
+					<button class="btn btn-success btn-xs" ng-click="vm.addFriend(person._id)" ng-hide="vm.user.friends.indexOf(person._id) == 0">Add Friend</button>
+					<button class="btn btn-danger btn-xs" ng-click="vm.removeFriend(person._id)" ng-hide="vm.user.friends.indexOf(person._id) == -1">Remove Friend</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
